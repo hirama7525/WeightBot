@@ -1,10 +1,9 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { getDB } = require('../utils/db');
 
-// 日付文字列→Date
 function parseDate(input) {
   const d = new Date(input);
-  return isNaN(d) ? null : new Date(d.toISOString().split('T')[0]); 
+  return isNaN(d) ? null : new Date(d.toISOString().split('T')[0]);
 }
 
 module.exports = {
@@ -19,12 +18,10 @@ module.exports = {
     db.data[userId] ||= { height: null, records: [], meals: {}, goal: null };
     const meals = db.data[userId].meals || {};
 
-    // 今日を含む7日前
     const now = new Date();
     const from = new Date(now);
     from.setDate(now.getDate() - 6);
 
-    // フィルタ： from <= date <= now
     const filtered = Object.entries(meals).filter(([dateStr]) => {
       const dateObj = parseDate(dateStr);
       return dateObj && dateObj >= from && dateObj <= now;
@@ -35,8 +32,7 @@ module.exports = {
       return;
     }
 
-    // 日付の昇順
-    const sorted = filtered.sort(([a], [b]) => new Date(a) - new Date(b));
+    const sorted = filtered.sort(([a],[b]) => new Date(a) - new Date(b));
 
     const message = sorted.map(([date, mealArray]) => {
       if (!Array.isArray(mealArray)) mealArray = [mealArray];

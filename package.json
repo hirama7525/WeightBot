@@ -1,20 +1,15 @@
 {
-  "name": "weightbot",
+  "name": "weight-discord-bot",
   "version": "1.0.0",
+  "description": "Weight management Discord Bot with auto slash-command registration",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "@discordjs/rest": "^2.4.3",
-    "chartjs-node-canvas": "^5.0.0",
-    "discord-api-types": "^0.37.119",
-    "discord.js": "^14.18.0",
-    "dotenv": "^16.4.7",
-    "lowdb": "^7.0.1"
+    "discord.js": "^14.7.1",
+    "express": "^4.18.2",
+    "lowdb": "^5.0.4",
+    "chartjs-node-canvas": "^4.2.6"
   }
 }

@@ -18,7 +18,6 @@ module.exports = {
       return;
     }
 
-    // 最新のものが最後に入るので、slice(-10)後にreverse
     const latest = records.slice(-10).reverse().map(r =>
       `${r.date}: ${r.weight}kg (BMI: ${r.bmi})`
     ).join('\n');
